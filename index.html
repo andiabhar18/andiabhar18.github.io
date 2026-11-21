@@ -237,11 +237,122 @@ footer { color: var(--muted); font-size: .86rem; }
 @media (prefers-reduced-motion: reduce) {
   .collage-video img { transition: none; }
 }
+/* Light drifts behind the page independently of the foreground content. */
+body { isolation: isolate; }
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 70% 2%, #183931 0, transparent 58%), #0b0e0e;
+}
+/* Two irregular edges move on different axes for a slow, flowing outline. */
+.ambient span {
+  position: absolute;
+  width: clamp(18rem, 68vmin, 54rem);
+  height: clamp(17rem, 57vmin, 43rem);
+  color: #326b52;
+  opacity: .54;
+  border-radius: 62% 38% 45% 55% / 40% 51% 49% 60%;
+  background:
+    radial-gradient(ellipse at 30% 18%, #a1d6b036, transparent 55%),
+    radial-gradient(ellipse at 58% 55%, #152521 20%, #2a453a 75%);
+  box-shadow: inset 15px 16px 36px #86c6a366, inset -15px -9px 31px #55967855, 0 0 55px #42997538;
+  filter: blur(7px);
+  animation: liquid-flow 17s ease-in-out infinite alternate;
+}
+.ambient span::after {
+  content: "";
+  position: absolute;
+  inset: 10% 7% 16% 11%;
+  border-radius: inherit;
+  box-shadow: inset 9px 8px 32px #070f0d80, inset -10px -10px 25px #88c7ad52;
+  mix-blend-mode: screen;
+}
+.ambient span:first-child { top: -14%; right: -9%; }
+.ambient span:nth-child(2) {
+  top: 41%; left: -18%;
+  width: clamp(15rem, 52vmin, 42rem);
+  height: clamp(17rem, 60vmin, 46rem);
+  background:
+    radial-gradient(ellipse at 28% 23%, #589a8e50, transparent 55%),
+    radial-gradient(ellipse at 54% 53%, #122324 25%, #2c4b46 79%);
+  box-shadow: inset 14px 18px 35px #80b7a878, inset -17px -12px 36px #4e8d8066, 0 0 50px #3d8d7a38;
+  animation-duration: 21s;
+  animation-delay: -9s;
+}
+.ambient span:nth-child(3) {
+  right: 10%; top: 65%;
+  width: clamp(10rem, 28vmin, 24rem);
+  height: clamp(9rem, 23vmin, 20rem);
+  background: radial-gradient(ellipse at center, #1b2c23 30%, #416247);
+  box-shadow: inset 9px 12px 24px #a4c98764, inset -9px -9px 21px #6ca47266, 0 0 31px #6ca86739;
+  animation-duration: 14s;
+  animation-delay: -6s;
+}
+@keyframes liquid-flow {
+  0%   { transform: translate3d(-16%, -8%, 0) rotate(-17deg) scale(.91, .9); border-radius: 62% 38% 45% 55% / 40% 51% 49% 60%; }
+  32%  { transform: translate3d(-35%, 23%, 0) rotate(11deg) scale(1.18, .91); border-radius: 38% 62% 39% 61% / 58% 39% 61% 42%; }
+  68%  { transform: translate3d(2%, 33%, 0) rotate(36deg) scale(.91, 1.13); border-radius: 58% 42% 62% 38% / 36% 58% 42% 64%; }
+  100% { transform: translate3d(15%, 2%, 0) rotate(3deg) scale(1.14, .97); border-radius: 45% 55% 38% 62% / 58% 35% 65% 42%; }
+}
+
+/* Translucent surfaces carry the same green palette as the page. */
+.top, .tilt, .skills div, .award, .contact, .platform-links a, .player-toolbar button {
+  border-color: #b6eed52e;
+  background: linear-gradient(145deg, #bfffe513, #8fc7b406 55%, #a6cfaa0c), #13201dee;
+  box-shadow: inset 0 1px 0 #b6eed52a, inset 0 0 0 1px #c2f9dc0a, 0 12px 30px #050a0866;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .top, .tilt, .skills div, .award, .contact, .platform-links a, .player-toolbar button {
+    background-color: #11201b65;
+    -webkit-backdrop-filter: blur(17px) saturate(1.4);
+    backdrop-filter: blur(17px) saturate(1.4);
+  }
+  .top { background-color: #0e1713b0; }
+}
+.hero-zone {
+  background: radial-gradient(ellipse at 75% 48%, #1229225c 0, transparent 62%),
+    repeating-linear-gradient(90deg, transparent 0, transparent calc(100% / 7 - 1px), #24332d44 calc(100% / 7 - 1px), #24332d44 calc(100% / 7));
+}
+.photo-frame { border: 1px solid #a1d9b736; }
+.hero-photo { border-color: #7fb49975; }
+.skills div, .award { border-left-color: #36e78a80; }
+.platform-links a:hover { border-color: var(--green); }
+.collage-video::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border: 1px solid #b6eed54f;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 #e4fff54a;
+  pointer-events: none;
+}
+.collage-caption {
+  background: linear-gradient(110deg, #2639349c, #11211c94);
+  -webkit-backdrop-filter: blur(9px) saturate(1.2);
+  backdrop-filter: blur(9px) saturate(1.2);
+}
+.grade-album {
+  --grade: brightness(.95) contrast(1.07) saturate(.75);
+  --wash: linear-gradient(150deg, #3e987a18, transparent 55%, #091b1250);
+  --position: 50% 56%;
+}
+@media(max-width: 650px) {
+  .photos figure:last-child { grid-column: 1/-1; }
+  .photos figure:last-child .photo-frame { aspect-ratio: 1.618; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient span { animation: none; }
+}
 </style>
 <link rel="stylesheet" href="/pembelajaran/aos.css">
 
 </head>
 <body>
+<div class="ambient" aria-hidden="true"><span></span><span></span><span></span></div>
 <a class="skip" href="#konten">Lewati ke konten</a>
 <header class="top" id="atas"><div class="shell"><a class="brand" href="#atas"><span class="brand-mark" aria-hidden="true">AA</span> Andi Abhar</a><nav aria-label="Navigasi utama"><a href="#karya">Karya</a><a href="#potret">Potret</a><a href="#tentang">Tentang</a><a href="#pengalaman">Pengalaman</a><a href="#kontak">Kontak</a></nav></div></header>
 <main id="konten">
@@ -266,6 +377,9 @@ footer { color: var(--muted); font-size: .86rem; }
 <figure data-aos="fade-up"><div class="tilt"><div class="photo-frame grade-mountain"><img src="portrait-2.jpg" alt="Andi Abhar menghadap pegunungan" loading="lazy"></div></div><figcaption>Di pegunungan</figcaption></figure>
 <figure data-aos="fade-up" data-aos-delay="100"><div class="tilt"><div class="photo-frame grade-close landscape"><img src="portrait-3.jpg" alt="Potret dekat Andi Abhar berkacamata" loading="lazy"></div></div><figcaption>Potret dekat</figcaption></figure>
 <figure data-aos="fade-up" data-aos-delay="200"><div class="tilt"><div class="photo-frame grade-coast"><img src="portrait-4.jpg" alt="Andi Abhar di Hutan Mangrove Matalalang" loading="lazy"></div></div><figcaption>Matalalang, Selayar</figcaption></figure>
+<figure data-aos="fade-up" data-aos-delay="0"><div class="tilt"><div class="photo-frame grade-album"><img src="abhar-arches.webp" alt="Andi Abhar berdiri di bawah lengkungan batu" loading="lazy"></div></div><figcaption>Di bawah lengkungan batu</figcaption></figure>
+<figure data-aos="fade-up" data-aos-delay="85"><div class="tilt"><div class="photo-frame grade-album"><img src="abhar-reflection.webp" alt="Gerbang batu dan pantulannya di bawah langit biru" loading="lazy"></div></div><figcaption>Gerbang dan pantulan</figcaption></figure>
+<figure data-aos="fade-up" data-aos-delay="170"><div class="tilt"><div class="photo-frame grade-album"><img src="abhar-water.webp" alt="Bangunan beratap merah di tepi air" loading="lazy"></div></div><figcaption>Pemandangan tepi air</figcaption></figure>
 </div></div></section>
 <section class="section" id="tentang"><div class="shell profile">
 <div data-aos="fade-right"><h2>Tentang saya</h2><p>Saya mahasiswa Ilmu Hukum di UIN Alauddin Makassar dengan pengalaman di pers mahasiswa, penyuluhan hukum, dan produksi konten digital. Pengalaman sebagai reporter melatih saya mencari ide, melakukan wawancara, dan menyusun informasi lapangan menjadi cerita yang terstruktur.</p><p>Dalam produksi video, saya terbiasa menggunakan kamera, drone, dan gimbal. Saya memahami dasar komposisi gambar, sudut kamera, serta pergerakan kamera, dan terus mengembangkan ketiganya lewat praktik.</p></div>
