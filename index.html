@@ -83,8 +83,8 @@ nav a:hover, .actions > a:not(.button):hover { color: var(--green); }
 .reel-button.portrait img { object-fit: contain; }
 .play-mark { display: grid; place-items: center; border-radius: 50%; position: absolute; bottom: 1rem; left: 1rem; width: 2.9rem; aspect-ratio: 1; padding-left: .12em; background: var(--green); color: #071810; }
 .credits, figcaption { padding-top: .68rem; }
-.photos { display: grid; grid-template-columns: 1fr 1.618fr 1fr; gap: var(--gap); align-items: start; }
-.photos .landscape { aspect-ratio: 1.618; }
+.photos { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; align-items: start; }
+.photos .photo-frame { aspect-ratio: 4/3; }
 figcaption { color: var(--muted); font-size: .88rem; }
 .profile { display: grid; grid-template-columns: minmax(0,1.618fr) minmax(0,1fr); gap: var(--gap); }
 .profile p { margin-top: 1rem; max-width: 59ch; }
@@ -114,7 +114,6 @@ footer { color: var(--muted); font-size: .86rem; }
   .head { display: block; }
   .head p { margin-top: .65rem; }
   .photos { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .photos figure:nth-child(2) { grid-column: 1/-1; grid-row: 2; }
   .timeline li { grid-template-columns: 1fr; gap: .15rem; }
 }
 @media(prefers-reduced-motion:reduce) {
@@ -217,7 +216,7 @@ footer { color: var(--muted); font-size: .86rem; }
 }
 .platform-links a:hover { border-color: var(--mint, var(--green)); }
 .platform-logo { flex: 0 0 auto; width: 1.2rem; height: 1.2rem; }
-@media (max-width: 900px) {
+@media (max-width: 920px) {
   .video-collage {
     grid-template-columns: repeat(2,minmax(0,1fr));
     grid-template-areas: "a a" "d e" "b c" "f f";
@@ -340,12 +339,70 @@ body { isolation: isolate; }
   --wash: linear-gradient(150deg, #3e987a18, transparent 55%, #091b1250);
   --position: 50% 56%;
 }
-@media(max-width: 650px) {
-  .photos figure:last-child { grid-column: 1/-1; }
-  .photos figure:last-child .photo-frame { aspect-ratio: 1.618; }
-}
+@media(max-width: 430px) { .photos { gap: .65rem; } }
 @media (prefers-reduced-motion: reduce) {
   .ambient span { animation: none; }
+}
+/* Thumbnail and playback details occupy separate rows within each card. */
+.collage-video {
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: stretch;
+  background: #192623;
+}
+.collage-video::after { content: none; }
+.collage-thumb { position: relative; display: block; min-height: 0; min-width: 0; overflow: hidden; }
+.collage-video .collage-thumb img { inset: 0; z-index: auto; }
+.collage-caption {
+  position: relative;
+  align-self: stretch;
+  min-height: 3.25rem;
+  padding: .65rem .75rem;
+  border-top: 1px solid #b6eed532;
+  background: linear-gradient(110deg, #2b423a, #172824);
+}
+.collage-caption strong, .collage-caption time { opacity: 1; }
+.collage-play {
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  box-shadow: 0 2px 12px #0b090e5e;
+}
+.collage-play::before {
+  content: "";
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  border-left: .47rem solid currentColor;
+  border-top: .31rem solid transparent;
+  border-bottom: .31rem solid transparent;
+}
+
+@media (min-width: 921px) {
+  .video-collage {
+    grid-template-columns: 2fr 1.13fr 1.13fr 1.83fr;
+    aspect-ratio: 2.21;
+    min-height: 28rem;
+  }
+}
+@media (max-width: 920px) {
+  .collage-video, .collage-video.is-portrait {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: auto;
+  }
+  .collage-thumb { width: 100%; }
+  .collage-video .collage-thumb img {
+    position: static;
+    display: block;
+    height: auto;
+  }
+}
+@media (max-width: 720px) {
+  .video-collage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "a" "b" "c" "d" "e" "f";
+    gap: .85rem;
+  }
 }
 </style>
 <link rel="stylesheet" href="/pembelajaran/aos.css">
@@ -361,14 +418,14 @@ body { isolation: isolate; }
 
 <aside aria-label="Potret Andi Abhar"><div class="tilt hero-photo"><div class="photo-frame grade-hero"><img src="portrait-1.jpg" alt="Potret Andi Abhar dengan pencahayaan dari samping" fetchpriority="high"></div></div></aside>
 </div></div>
-<section class="section" id="karya"><div class="shell"><div class="head"><div><p class="kicker">Portofolio</p><h2>Karya video</h2></div><p>Pilih sampul untuk memutar video dalam layar penuh.</p></div>
+<section class="section" id="karya"><div class="shell"><div class="head"><div><p class="kicker">Portofolio</p><h2>Karya video</h2></div><p>Pilih kartu untuk memutar video dalam layar penuh.</p></div>
 <div class="video-collage">
-<button type="button" class="collage-video" data-tile="a" data-video="/reel-1.mp4" aria-label="Putar video pilihan"><img src="/reel-1.jpg" alt="" loading="lazy"><span class="collage-caption"><span class="collage-play" aria-hidden="true">▶</span><strong>Video pilihan</strong><time datetime="PT1M19S">1:19</time></span></button>
-<button type="button" class="collage-video is-portrait" data-tile="d" data-video="/reel-4.mp4" aria-label="Putar video 4"><img src="/reel-4.jpg" alt="" loading="lazy"><span class="collage-caption"><span class="collage-play" aria-hidden="true">▶</span><strong>Video 4</strong><time datetime="PT27S">0:27</time></span></button>
-<button type="button" class="collage-video is-portrait" data-tile="e" data-video="/reel-5.mp4" aria-label="Putar video 5"><img src="/reel-5.jpg" alt="" loading="lazy"><span class="collage-caption"><span class="collage-play" aria-hidden="true">▶</span><strong>Video 5</strong><time datetime="PT10S">0:10</time></span></button>
-<button type="button" class="collage-video" data-tile="b" data-video="/reel-2.mp4" aria-label="Putar video 2"><img src="/reel-2.jpg" alt="" loading="lazy"><span class="collage-caption"><span class="collage-play" aria-hidden="true">▶</span><strong>Video 2</strong><time datetime="PT30S">0:30</time></span></button>
-<button type="button" class="collage-video" data-tile="c" data-video="/reel-3.mp4" aria-label="Putar video 3"><img src="/reel-3.jpg" alt="" loading="lazy"><span class="collage-caption"><span class="collage-play" aria-hidden="true">▶</span><strong>Video 3</strong><time datetime="PT1M15S">1:15</time></span></button>
-<button type="button" class="collage-video" data-tile="f" data-video="/reel-6.mp4" aria-label="Putar video 6"><img src="/reel-6.jpg" alt="" loading="lazy"><span class="collage-caption"><span class="collage-play" aria-hidden="true">▶</span><strong>Video 6</strong><time datetime="PT20S">0:20</time></span></button>
+<button type="button" class="collage-video" data-tile="a" data-video="/reel-1.mp4" aria-label="Putar video pilihan"><span class="collage-thumb"><img src="/reel-1.jpg" alt="" width="1920" height="1080"></span><span class="collage-caption"><span class="collage-play" aria-hidden="true"></span><strong>Video pilihan</strong><time datetime="PT1M19S">1:19</time></span></button>
+<button type="button" class="collage-video" data-tile="b" data-video="/reel-2.mp4" aria-label="Putar video 2"><span class="collage-thumb"><img src="/reel-2.jpg" alt="" width="1920" height="1080"></span><span class="collage-caption"><span class="collage-play" aria-hidden="true"></span><strong>Video 2</strong><time datetime="PT30S">0:30</time></span></button>
+<button type="button" class="collage-video" data-tile="c" data-video="/reel-3.mp4" aria-label="Putar video 3"><span class="collage-thumb"><img src="/reel-3.jpg" alt="" width="1920" height="1080"></span><span class="collage-caption"><span class="collage-play" aria-hidden="true"></span><strong>Video 3</strong><time datetime="PT1M15S">1:15</time></span></button>
+<button type="button" class="collage-video is-portrait" data-tile="d" data-video="/reel-4.mp4" aria-label="Putar video 4"><span class="collage-thumb"><img src="/reel-4.jpg" alt="" width="1080" height="1920"></span><span class="collage-caption"><span class="collage-play" aria-hidden="true"></span><strong>Video 4</strong><time datetime="PT27S">0:27</time></span></button>
+<button type="button" class="collage-video is-portrait" data-tile="e" data-video="/reel-5.mp4" aria-label="Putar video 5"><span class="collage-thumb"><img src="/reel-5.jpg" alt="" width="720" height="1280"></span><span class="collage-caption"><span class="collage-play" aria-hidden="true"></span><strong>Video 5</strong><time datetime="PT10S">0:10</time></span></button>
+<button type="button" class="collage-video" data-tile="f" data-video="/reel-6.mp4" aria-label="Putar video 6"><span class="collage-thumb"><img src="/reel-6.jpg" alt="" width="720" height="405"></span><span class="collage-caption"><span class="collage-play" aria-hidden="true"></span><strong>Video 6</strong><time datetime="PT20S">0:20</time></span></button>
 </div>
 </div></section>
 <section class="section" id="potret"><div class="shell">
@@ -377,9 +434,9 @@ body { isolation: isolate; }
 <figure data-aos="fade-up"><div class="tilt"><div class="photo-frame grade-mountain"><img src="portrait-2.jpg" alt="Andi Abhar menghadap pegunungan" loading="lazy"></div></div><figcaption>Di pegunungan</figcaption></figure>
 <figure data-aos="fade-up" data-aos-delay="100"><div class="tilt"><div class="photo-frame grade-close landscape"><img src="portrait-3.jpg" alt="Potret dekat Andi Abhar berkacamata" loading="lazy"></div></div><figcaption>Potret dekat</figcaption></figure>
 <figure data-aos="fade-up" data-aos-delay="200"><div class="tilt"><div class="photo-frame grade-coast"><img src="portrait-4.jpg" alt="Andi Abhar di Hutan Mangrove Matalalang" loading="lazy"></div></div><figcaption>Matalalang, Selayar</figcaption></figure>
-<figure data-aos="fade-up" data-aos-delay="0"><div class="tilt"><div class="photo-frame grade-album"><img src="abhar-arches.webp" alt="Andi Abhar berdiri di bawah lengkungan batu" loading="lazy"></div></div><figcaption>Di bawah lengkungan batu</figcaption></figure>
-<figure data-aos="fade-up" data-aos-delay="85"><div class="tilt"><div class="photo-frame grade-album"><img src="abhar-reflection.webp" alt="Gerbang batu dan pantulannya di bawah langit biru" loading="lazy"></div></div><figcaption>Gerbang dan pantulan</figcaption></figure>
-<figure data-aos="fade-up" data-aos-delay="170"><div class="tilt"><div class="photo-frame grade-album"><img src="abhar-water.webp" alt="Bangunan beratap merah di tepi air" loading="lazy"></div></div><figcaption>Pemandangan tepi air</figcaption></figure>
+<figure data-aos="fade-up" data-aos-delay="0"><div class="tilt"><div class="photo-frame grade-album" style="--position:50% 64%"><img src="abhar-arches.webp" alt="Andi Abhar berdiri di bawah lengkungan batu" loading="lazy"></div></div><figcaption>Di bawah lengkungan batu</figcaption></figure>
+<figure data-aos="fade-up" data-aos-delay="85"><div class="tilt"><div class="photo-frame grade-album" style="--position:50% 47%"><img src="abhar-reflection.webp" alt="Gerbang batu dan pantulannya di bawah langit biru" loading="lazy"></div></div><figcaption>Gerbang dan pantulan</figcaption></figure>
+<figure data-aos="fade-up" data-aos-delay="170"><div class="tilt"><div class="photo-frame grade-album" style="--position:50% 43%"><img src="abhar-water.webp" alt="Bangunan beratap merah di tepi air" loading="lazy"></div></div><figcaption>Pemandangan tepi air</figcaption></figure>
 </div></div></section>
 <section class="section" id="tentang"><div class="shell profile">
 <div data-aos="fade-right"><h2>Tentang saya</h2><p>Saya mahasiswa Ilmu Hukum di UIN Alauddin Makassar dengan pengalaman di pers mahasiswa, penyuluhan hukum, dan produksi konten digital. Pengalaman sebagai reporter melatih saya mencari ide, melakukan wawancara, dan menyusun informasi lapangan menjadi cerita yang terstruktur.</p><p>Dalam produksi video, saya terbiasa menggunakan kamera, drone, dan gimbal. Saya memahami dasar komposisi gambar, sudut kamera, serta pergerakan kamera, dan terus mengembangkan ketiganya lewat praktik.</p></div>
