@@ -66,7 +66,7 @@ nav a:hover, .actions > a:not(.button):hover { color: var(--green); }
 .grade-coast { --grade: brightness(.88) contrast(1.1) saturate(.7); --wash: linear-gradient(160deg,#0f766b20,transparent 60%,#05140c66); --position: 50% 60%; }
 .hero-photo { margin: 0 .7rem .7rem 0; border-color: #3c6956; }
 .hero-photo::before { content: ""; position: absolute; inset: .75rem -.75rem -.75rem .75rem; z-index: -1; border: 1px solid #37e38d8c; transform: translateZ(-20px); }
-.section { padding-block: clamp(3.5rem,8vw,7rem); border-bottom: 1px solid var(--line); scroll-margin-top: 1rem; }
+.section { overflow-x: clip; padding-block: clamp(3.5rem,8vw,7rem); border-bottom: 1px solid var(--line); scroll-margin-top: 1rem; }
 .head { display: flex; justify-content: space-between; align-items: end; gap: 1.25rem; margin-bottom: 2rem; }
 .head p { max-width: 27ch; }
 .gallery { display: grid; grid-template-columns: minmax(0,1.618fr) minmax(0,1fr); gap: var(--gap); align-items: start; }
@@ -124,10 +124,10 @@ footer { color: var(--muted); font-size: .86rem; }
 </head>
 <body>
 <a class="skip" href="#konten">Lewati ke konten</a>
-<header class="top"><div class="shell"><a class="brand" href="#konten"><span class="brand-mark" aria-hidden="true">AA</span> Andi Abhar</a><nav aria-label="Navigasi utama"><a href="#karya">Karya</a><a href="#potret">Potret</a><a href="#tentang">Tentang</a><a href="#pengalaman">Pengalaman</a><a href="#kontak">Kontak</a></nav></div></header>
+<header class="top" id="atas"><div class="shell"><a class="brand" href="#atas"><span class="brand-mark" aria-hidden="true">AA</span> Andi Abhar</a><nav aria-label="Navigasi utama"><a href="#karya">Karya</a><a href="#potret">Potret</a><a href="#tentang">Tentang</a><a href="#pengalaman">Pengalaman</a><a href="#kontak">Kontak</a></nav></div></header>
 <main id="konten">
 <div class="hero-zone"><div class="shell hero">
-<div><p class="kicker">Videografi · Editing · Jurnalistik</p><h1>Andi <em>Abhar</em></h1><p>Saya membuat konten video dan terbiasa mendokumentasikan cerita lewat kamera, penyuntingan, dan peliputan jurnalistik.</p><div class="actions"><a class="button" href="#karya">Lihat karya video ↓</a><a href="#kontak">Hubungi saya ↗</a></div></div>
+<div><p class="kicker">Videografi · Editing · Jurnalistik</p><h1>Andi <em>Abhar</em></h1><p>Saya membuat konten video dan terbiasa mendokumentasikan cerita lewat kamera, penyuntingan, dan peliputan jurnalistik.</p><div class="actions"><a class="button" href="#karya">Lihat karya video ↓</a><a href="#kontak">Hubungi saya →</a></div></div>
 
 <aside aria-label="Potret Andi Abhar"><div class="tilt hero-photo"><div class="photo-frame grade-hero"><img src="portrait-1.jpg" alt="Potret Andi Abhar dengan pencahayaan dari samping" fetchpriority="high"></div></div></aside>
 </div></div>
@@ -175,9 +175,9 @@ footer { color: var(--muted); font-size: .86rem; }
 <li><span class="date">2024–2025</span><div><h3>Penyuluhan hukum</h3><p>Koordinator kegiatan penyuluhan di Kajang pada 2025. Terlibat dalam penyuluhan mengenai perlindungan ekosistem laut di Jeneponto pada 2024.</p></div></li>
 <li><span class="date">2023–sekarang</span><div><h3>Ilmu Hukum · UIN Alauddin Makassar</h3><p>Anggota UKM RITMA dengan keterlibatan dalam kegiatan riset mahasiswa dan kemitraan masyarakat.</p></div></li>
 </ul></div></section>
-<section class="section contact" id="kontak"><div class="shell"><h2>Mari berkolaborasi.</h2><div class="actions"><a class="button" href="https://www.instagram.com/ad_abharhst/" target="_blank" rel="noopener noreferrer">Hubungi @ad_abharhst ↗</a></div></div></section>
+<section class="section contact" id="kontak"><div class="shell"><h2>Mari berkolaborasi.</h2><div class="actions"><a class="button" href="https://www.instagram.com/ad_abharhst/" target="_blank" rel="noopener noreferrer">Hubungi @ad_abharhst →</a></div></div></section>
 </main>
-<footer><div class="shell"><span>© 2026 Andi Abhar</span><a href="#konten">Kembali ke atas ↑</a></div></footer>
+<footer><div class="shell"><span>© 2026 Andi Abhar</span><a href="#atas">Kembali ke atas ↑</a></div></footer>
 
 <dialog class="player" aria-label="Pemutar video layar penuh">
 <div class="player-stage">
