@@ -45,6 +45,7 @@ h3{font-size:clamp(1.125rem,1rem + .55vw,1.38rem)}
 .player{border:0;margin:0;padding:0;inset:0;width:100%;height:100%;max-width:none;max-height:none;background:#090909;color:white}
 .player[open]{display:grid;place-items:center}
 .player::backdrop{background:#090909}
+.player-stage{position:relative;width:100%;height:100%;min-height:0;background:#090909}
 .player video{width:100%;height:100%;min-height:0;object-fit:contain;background:#090909}
 .player-toolbar{position:absolute;z-index:1;display:flex;gap:.5rem;top:max(.8rem,env(safe-area-inset-top));right:max(.8rem,env(safe-area-inset-right))}
 .player-toolbar button{border:1px solid #ffffff70;color:white;background:#111d;border-radius:5px;padding:.55rem .8rem;font:inherit;cursor:pointer}
@@ -114,8 +115,10 @@ h3{font-size:clamp(1.125rem,1rem + .55vw,1.38rem)}
 <footer><div class="shell"><span>© 2026 Andi Abhar</span><a href="#konten">Kembali ke atas ↑</a></div></footer>
 
 <dialog class="player" aria-label="Pemutar video layar penuh">
+<div class="player-stage">
 <video controls playsinline preload="none"></video>
 <div class="player-toolbar"><button type="button" class="fullscreen">Layar penuh</button><button type="button" class="close-player" autofocus>Tutup ×</button></div>
+</div>
 </dialog>
 <script src="/pembelajaran/aos.js"></script>
 <script src="/pembelajaran/gsap.min.js"></script>
@@ -123,13 +126,14 @@ h3{font-size:clamp(1.125rem,1rem + .55vw,1.38rem)}
 <script>
 const player = document.querySelector('.player');
 const video = player.querySelector('video');
+const stage = player.querySelector('.player-stage');
 const fullscreen = player.querySelector('.fullscreen');
 let launcher;
 
 function enterFullscreen() {
   if (document.fullscreenElement) return;
-  if (player.requestFullscreen && document.fullscreenEnabled) {
-    player.requestFullscreen().catch(() => {});
+  if (stage.requestFullscreen && document.fullscreenEnabled) {
+    stage.requestFullscreen().catch(() => {});
   } else if (typeof video.webkitEnterFullscreen === 'function' && video.readyState) {
     try { video.webkitEnterFullscreen(); } catch {}
   }
@@ -150,7 +154,7 @@ document.querySelectorAll('[data-video]').forEach(button => {
 fullscreen.addEventListener('click', enterFullscreen);
 player.querySelector('.close-player').addEventListener('click', () => player.close());
 player.addEventListener('close', () => {
-  if (document.fullscreenElement === player) document.exitFullscreen().catch(() => {});
+  if (document.fullscreenElement === stage) document.exitFullscreen().catch(() => {});
   video.pause();
   video.removeAttribute('src');
   video.load();
