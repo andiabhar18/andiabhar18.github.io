@@ -11,35 +11,96 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--bg:#141611;--panel:#20231b;--white:#f8f6eb;--muted:#c0c3b3;--line:#414638;--accent:#d6f875;--serif:"Instrument Serif",Georgia,serif;--sans:"Space Grotesk",system-ui,sans-serif}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:1rem/1.65 var(--sans)}a{color:inherit;text-underline-offset:.26em}a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}h1,h2,h3,p{margin:0}h1,h2{font-family:var(--serif);font-weight:400;line-height:.92}h2{font-size:clamp(3.4rem,8vw,7rem);letter-spacing:-.035em}h3{font-size:1.15rem;line-height:1.35}p{color:var(--muted)}.shell{width:min(1160px,calc(100% - 3rem));margin:auto}.skip{position:absolute;left:1rem;top:-5rem;background:var(--accent);color:var(--bg);padding:.5rem 1rem}.skip:focus{top:.5rem;z-index:2}.top{border-bottom:1px solid var(--line)}.top .shell,footer .shell{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px}.brand{text-decoration:none;font-weight:700;letter-spacing:-.03em;font-size:1.18rem}.brand span,.kicker{color:var(--accent)}nav{display:flex;gap:clamp(.6rem,3vw,2rem);font-size:.88rem}nav a{text-decoration:none}nav a:hover,.out:hover{color:var(--accent)}.hero{padding:clamp(4rem,9vw,8rem) 0 clamp(4rem,8vw,7rem);display:grid;grid-template-columns:1.45fr .65fr;align-items:center;gap:clamp(2rem,7vw,6rem)}.kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700}.hero h1{font-size:clamp(5rem,13.3vw,12rem);letter-spacing:-.055em;margin:.22em 0 .16em;line-height:.78}.hero h1 em{display:block;color:var(--accent);font-weight:400}.hero p:not(.kicker){max-width:41ch;font-size:clamp(1rem,2vw,1.22rem)}.actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:1.65rem}.button{background:var(--accent);color:#161a10;text-decoration:none;padding:.67rem 1.05rem;border-radius:3px;font-weight:700}.button:hover{background:#ecffa6}.section{padding:clamp(3.75rem,8vw,7.5rem) 0;border-top:1px solid var(--line)}.head{display:flex;align-items:end;justify-content:space-between;gap:1.25rem;margin-bottom:2.1rem}.head p{max-width:34ch}.media{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;position:relative;aspect-ratio:9/17}.media iframe{display:block;width:100%;height:100%;border:0;background:#f6f6f6}.credits{display:flex;justify-content:space-between;gap:.5rem;align-items:center;margin-top:.75rem;font-size:.86rem}.out{color:var(--muted)}.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.gallery .credits{align-items:start;flex-direction:column;gap:.18rem}.note{margin-top:1.25rem;font-size:.84rem}.profile{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,7vw,6rem)}.profile p:not(.kicker){margin-top:1.15rem;max-width:58ch}.skills{display:grid;gap:0;align-self:end}.skills div{border-top:1px solid var(--line);padding:.9rem 0}.skills div:last-child{border-bottom:1px solid var(--line)}.skills p{margin-top:.15rem!important}.award{background:var(--accent);color:#171a11;border-radius:12px;padding:clamp(1.5rem,5vw,3.5rem);display:grid;grid-template-columns:.7fr 1.3fr;gap:1.15rem;align-items:center;margin-bottom:3rem}.award strong{font:clamp(3.8rem,9vw,8rem)/.9 var(--serif)}.award p{color:#343c24}.timeline{list-style:none;padding:0;margin:1.5rem 0 0}.timeline li{display:grid;grid-template-columns:minmax(7rem,20%) 1fr;gap:1rem;padding:1rem 0;border-top:1px solid var(--line)}.timeline time,.timeline .date{color:var(--accent);font-size:.85rem}.contact{background:var(--panel)}.contact h2{max-width:11ch}.contact .actions{margin-top:1.35rem}footer{border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:1rem/1.65 var(--sans)}a{color:inherit;text-underline-offset:.26em}a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}h1,h2,h3,p{margin:0}h1,h2{font-family:var(--serif);font-weight:400;line-height:.92}h2{font-size:clamp(3.4rem,8vw,7rem);letter-spacing:-.035em}h3{font-size:1.15rem;line-height:1.35}p{color:var(--muted)}.shell{width:min(1160px,calc(100% - 3rem));margin:auto}.skip{position:absolute;left:1rem;top:-5rem;background:var(--accent);color:var(--bg);padding:.5rem 1rem}.skip:focus{top:.5rem;z-index:2}.top{border-bottom:1px solid var(--line)}.top .shell,footer .shell{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px}.brand{text-decoration:none;font-weight:700;letter-spacing:-.03em;font-size:1.18rem}.brand span,.kicker{color:var(--accent)}nav{display:flex;gap:clamp(.6rem,3vw,2rem);font-size:.88rem}nav a{text-decoration:none}nav a:hover,.out:hover{color:var(--accent)}.hero{padding:clamp(4rem,9vw,8rem) 0 clamp(4rem,8vw,7rem);display:grid;grid-template-columns:1.45fr .65fr;align-items:center;gap:clamp(2rem,7vw,6rem)}.kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700}.hero h1{font-size:clamp(5rem,13.3vw,12rem);letter-spacing:-.055em;margin:.22em 0 .16em;line-height:.78}.hero h1 em{display:block;color:var(--accent);font-weight:400}.hero p:not(.kicker){max-width:41ch;font-size:clamp(1rem,2vw,1.22rem)}.actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:1.65rem}.button{background:var(--accent);color:#161a10;text-decoration:none;padding:.67rem 1.05rem;border-radius:3px;font-weight:700}.button:hover{background:#ecffa6}.section{padding:clamp(3.75rem,8vw,7.5rem) 0;border-top:1px solid var(--line)}.head{display:flex;align-items:end;justify-content:space-between;gap:1.25rem;margin-bottom:2.1rem}.head p{max-width:34ch}.media{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;position:relative;aspect-ratio:9/17}.credits{display:flex;justify-content:space-between;gap:.5rem;align-items:center;margin-top:.75rem;font-size:.86rem}.out{color:var(--muted)}.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.gallery .credits{align-items:start;flex-direction:column;gap:.18rem}.note{margin-top:1.25rem;font-size:.84rem}.profile{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,7vw,6rem)}.profile p:not(.kicker){margin-top:1.15rem;max-width:58ch}.skills{display:grid;gap:0;align-self:end}.skills div{border-top:1px solid var(--line);padding:.9rem 0}.skills div:last-child{border-bottom:1px solid var(--line)}.skills p{margin-top:.15rem!important}.award{background:var(--accent);color:#171a11;border-radius:12px;padding:clamp(1.5rem,5vw,3.5rem);display:grid;grid-template-columns:.7fr 1.3fr;gap:1.15rem;align-items:center;margin-bottom:3rem}.award strong{font:clamp(3.8rem,9vw,8rem)/.9 var(--serif)}.award p{color:#343c24}.timeline{list-style:none;padding:0;margin:1.5rem 0 0}.timeline li{display:grid;grid-template-columns:minmax(7rem,20%) 1fr;gap:1rem;padding:1rem 0;border-top:1px solid var(--line)}.timeline time,.timeline .date{color:var(--accent);font-size:.85rem}.contact{background:var(--panel)}.contact h2{max-width:11ch}.contact .actions{margin-top:1.35rem}footer{border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
 @media(max-width:840px){.hero{grid-template-columns:1.1fr .85fr;gap:1.5rem}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery .media{aspect-ratio:9/15}.hero h1{font-size:clamp(4.7rem,14vw,8rem)}}
 @media(max-width:570px){.shell{width:calc(100% - 2rem)}.top .shell{min-height:64px}.hero,.profile,.award{grid-template-columns:1fr}.hero{padding-top:3.2rem}.hero aside{width:min(100%,335px)}.head{display:block}.head p{margin-top:.75rem}.gallery{grid-template-columns:1fr;gap:1.8rem}.gallery article{width:min(100%,380px)}.timeline li{grid-template-columns:1fr;gap:.15rem}.top nav{gap:.65rem;font-size:.78rem}}
+
+:root{--phi:1.618;--step:calc(1rem * var(--phi));--display:clamp(3rem,7vw,6.854rem)}
+html{scroll-behavior:smooth}
+body{font-size:clamp(1rem,.96rem + .18vw,1.125rem)}
+.shell{width:min(1240px,calc(100% - 3rem))}
+h2{font-size:var(--display);line-height:.95;letter-spacing:-.025em}
+h3{font-size:clamp(1.125rem,1rem + .55vw,1.38rem)}
+.hero{grid-template-columns:minmax(0,1.618fr) minmax(0,1fr);gap:var(--step)}
+.hero h1{font-size:clamp(4.75rem,12vw,11rem);line-height:.82;letter-spacing:-.045em}
+.hero p:not(.kicker){max-width:37ch}
+.profile{grid-template-columns:minmax(0,1.618fr) minmax(0,1fr)}
+.gallery{grid-template-columns:minmax(0,1.618fr) minmax(0,1fr);gap:var(--step);align-items:start}
+.gallery .feature{grid-column:1/-1}
+.gallery article{min-width:0;width:auto}
+.gallery .credits{display:flex;flex-direction:row;align-items:center}
+.media,.gallery .media{aspect-ratio:16/9;padding:0;width:100%;color:white;text-align:left;cursor:pointer}
+.reel-button{position:relative;border:1px solid var(--line);transition:border-color .25s}
+.reel-button:hover,.reel-button:focus-visible{border-color:var(--accent);outline:2px solid var(--accent);outline-offset:3px}
+.reel-button img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .45s}
+.reel-button.portrait{aspect-ratio:9/16;max-height:40rem;width:auto;max-width:100%}
+.reel-button.portrait img{object-fit:contain}
+.reel-button:hover img{transform:scale(1.025)}
+.play-mark{position:absolute;inset:auto auto 1rem 1rem;display:grid;place-items:center;width:3rem;height:3rem;border-radius:100%;background:var(--accent);color:var(--bg);font-size:1.125rem;padding-left:.12em}
+.portrait-card{margin-top:1rem}
+.tilt{isolation:isolate;position:relative;display:grid;place-items:center;min-height:17rem;aspect-ratio:1/1.13;border:1px solid var(--line);border-radius:12px;background:radial-gradient(circle at 50% 55%,#343d23,var(--panel) 67%);transform-style:preserve-3d}
+.tilt img{display:block;width:91%;height:94%;position:absolute;bottom:0;object-fit:contain;object-position:bottom;transform:translateZ(42px);filter:drop-shadow(0 20px 19px #0007)}
+.tilt::before{content:"";width:62%;aspect-ratio:1;border-radius:100%;border:1px solid #d6f87579;position:absolute;top:14%;left:19%;transform:translateZ(10px)}
+.photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.photos figure{margin:0}.photos figcaption{margin-top:.6rem;font-size:.9rem;color:var(--muted)}
+.player{border:0;margin:0;padding:0;inset:0;width:100%;height:100%;max-width:none;max-height:none;background:#090909;color:white}
+.player[open]{display:grid;place-items:center}
+.player::backdrop{background:#090909}
+.player video{width:100%;height:100%;min-height:0;object-fit:contain;background:#090909}
+.player-toolbar{position:absolute;z-index:1;display:flex;gap:.5rem;top:max(.8rem,env(safe-area-inset-top));right:max(.8rem,env(safe-area-inset-right))}
+.player-toolbar button{border:1px solid #ffffff70;color:white;background:#111d;border-radius:5px;padding:.55rem .8rem;font:inherit;cursor:pointer}
+.player-toolbar button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:650px){.shell{width:calc(100% - 2rem)}.hero,.profile,.gallery{grid-template-columns:minmax(0,1fr)}.hero aside{width:min(100%,380px);justify-self:center}.photos{grid-template-columns:1fr 1fr}.tilt{min-height:0}.hero h1{font-size:clamp(4.75rem,17vw,7.5rem)}}
+@media(max-width:390px){.top .shell{flex-wrap:wrap;gap:.1rem;padding:.55rem 0}.top nav{flex-wrap:wrap;flex-basis:100%;padding-bottom:.15rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-aos]{transform:none!important;opacity:1!important}}
 </style>
+<link rel="stylesheet" href="/pembelajaran/aos.css">
+
 </head>
 <body>
 <a class="skip" href="#konten">Lewati ke konten</a>
-<header class="top"><div class="shell"><a class="brand" href="#konten">Andi Abhar<span>.</span></a><nav aria-label="Navigasi utama"><a href="#karya">Karya</a><a href="#tentang">Tentang</a><a href="#pengalaman">Pengalaman</a><a href="#kontak">Kontak</a></nav></div></header>
+<header class="top"><div class="shell"><a class="brand" href="#konten">Andi Abhar<span>.</span></a><nav aria-label="Navigasi utama"><a href="#karya">Karya</a><a href="#potret">Potret</a><a href="#tentang">Tentang</a><a href="#pengalaman">Pengalaman</a><a href="#kontak">Kontak</a></nav></div></header>
 <main id="konten">
 <div class="shell hero">
 <div><p class="kicker">Gowa, Sulawesi Selatan</p><h1>Andi <em>Abhar</em></h1><p>Saya membuat konten video dan terbiasa mendokumentasikan cerita lewat kamera, penyuntingan, dan peliputan jurnalistik.</p><div class="actions"><a class="button" href="#karya">Lihat karya video ↓</a><a href="#kontak">Hubungi saya ↗</a></div></div>
-<aside aria-label="Reel pilihan">
-<div class="media"><iframe src="https://www.instagram.com/reel/DbhV8wzNQ82/embed/" title="Reel pilihan Andi Abhar di Instagram" allow="fullscreen; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-<div class="credits"><strong>Reel pilihan</strong><a class="out" href="https://www.instagram.com/reel/DbhV8wzNQ82/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
-</aside>
+
+<aside aria-label="Potret Andi Abhar"><div class="tilt hero-photo"><img src="/pembelajaran/img/tilt/tilt-1.png" alt="Potret Andi Abhar berdiri" fetchpriority="high"></div></aside>
 </div>
-<section class="section" id="karya"><div class="shell"><div class="head"><h2>Karya video</h2><p>Pilihan karya dalam format Reel. Satu video ditampilkan di bagian pembuka, dan empat lainnya ada di bawah.</p></div>
+<section class="section" id="karya"><div class="shell"><div class="head"><h2>Karya video</h2><p>Pilih sampul untuk memutar video dalam layar penuh.</p></div>
 <div class="gallery">
-<article><div class="media"><iframe loading="lazy" src="https://www.instagram.com/reel/DdjoYlVtLE0/embed/" title="Reel 2 Andi Abhar di Instagram" allow="fullscreen; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="credits"><h3>Reel 2</h3><a class="out" href="https://www.instagram.com/reel/DdjoYlVtLE0/" target="_blank" rel="noopener noreferrer">Tonton Reel 2 di Instagram ↗</a></div></article>
-<article><div class="media"><iframe loading="lazy" src="https://www.instagram.com/reel/DdjkGW5NcLp/embed/" title="Reel 3 Andi Abhar di Instagram" allow="fullscreen; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="credits"><h3>Reel 3</h3><a class="out" href="https://www.instagram.com/reel/DdjkGW5NcLp/" target="_blank" rel="noopener noreferrer">Tonton Reel 3 di Instagram ↗</a></div></article>
-<article><div class="media"><iframe loading="lazy" src="https://www.instagram.com/reel/Da-FGOzNJ-d/embed/" title="Reel 4 Andi Abhar di Instagram" allow="fullscreen; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="credits"><h3>Reel 4</h3><a class="out" href="https://www.instagram.com/reel/Da-FGOzNJ-d/" target="_blank" rel="noopener noreferrer">Tonton Reel 4 di Instagram ↗</a></div></article>
-<article><div class="media"><iframe loading="lazy" src="https://www.instagram.com/reel/DbfEzI5zWfg/embed/" title="Reel 5 Andi Abhar di Instagram" allow="fullscreen; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="credits"><h3>Reel 5</h3><a class="out" href="https://www.instagram.com/reel/DbfEzI5zWfg/" target="_blank" rel="noopener noreferrer">Tonton Reel 5 di Instagram ↗</a></div></article>
-</div><p class="note">Jika pratinjau tidak tampil, gunakan tautan Instagram di bawah video.</p></div></section>
+<article class="feature" data-aos="flip-left" data-aos-delay="0">
+<button class="media reel-button" type="button" data-video="reel-1.mp4" aria-label="Putar Reel pilihan dalam layar penuh">
+<img src="reel-1.jpg" alt=""><span class="play-mark" aria-hidden="true">▶</span>
+</button><div class="credits"><h3>Reel pilihan</h3></div></article>
+<article class="" data-aos="flip-left" data-aos-delay="60">
+<button class="media reel-button" type="button" data-video="reel-2.mp4" aria-label="Putar Reel 2 dalam layar penuh">
+<img src="reel-2.jpg" alt="" loading="lazy"><span class="play-mark" aria-hidden="true">▶</span>
+</button><div class="credits"><h3>Reel 2</h3></div></article>
+<article class="" data-aos="flip-left" data-aos-delay="120">
+<button class="media reel-button" type="button" data-video="reel-3.mp4" aria-label="Putar Reel 3 dalam layar penuh">
+<img src="reel-3.jpg" alt="" loading="lazy"><span class="play-mark" aria-hidden="true">▶</span>
+</button><div class="credits"><h3>Reel 3</h3></div></article>
+<article class="portrait-card" data-aos="flip-left" data-aos-delay="180">
+<button class="media reel-button portrait" type="button" data-video="reel-4.mp4" aria-label="Putar Reel 4 dalam layar penuh">
+<img src="reel-4.jpg" alt="" loading="lazy"><span class="play-mark" aria-hidden="true">▶</span>
+</button><div class="credits"><h3>Reel 4</h3></div></article>
+<article class="portrait-card" data-aos="flip-left" data-aos-delay="240">
+<button class="media reel-button portrait" type="button" data-video="reel-5.mp4" aria-label="Putar Reel 5 dalam layar penuh">
+<img src="reel-5.jpg" alt="" loading="lazy"><span class="play-mark" aria-hidden="true">▶</span>
+</button><div class="credits"><h3>Reel 5</h3></div></article>
+</div></div></section>
+<section class="section" id="potret"><div class="shell">
+<div class="head" data-aos="fade-up"><h2>Potret 3D</h2></div>
+<div class="photos">
+<figure data-aos="fade-up"><div class="tilt"><img src="/pembelajaran/img/tilt/tilt-1.png" alt="Andi Abhar berdiri menghadap kamera" loading="lazy"></div><figcaption>Potret berdiri</figcaption></figure>
+<figure data-aos="fade-up" data-aos-delay="100"><div class="tilt"><img src="/pembelajaran/img/tilt/tilt-2.png" alt="Andi Abhar dalam pose duduk" loading="lazy"></div><figcaption>Potret duduk</figcaption></figure>
+<figure data-aos="fade-up" data-aos-delay="200"><div class="tilt"><img src="/pembelajaran/img/tilt/tilt-3.png" alt="Andi Abhar berdiri membelakangi kamera" loading="lazy"></div><figcaption>Potret dari belakang</figcaption></figure>
+</div></div></section>
 <section class="section" id="tentang"><div class="shell profile">
-<div><h2>Tentang saya</h2><p>Saya mahasiswa Ilmu Hukum di UIN Alauddin Makassar dengan pengalaman di pers mahasiswa, penyuluhan hukum, dan produksi konten digital. Pengalaman sebagai reporter melatih saya mencari ide, melakukan wawancara, dan menyusun informasi lapangan menjadi cerita yang terstruktur.</p><p>Dalam produksi video, saya terbiasa menggunakan kamera, drone, dan gimbal. Saya memahami dasar komposisi gambar, sudut kamera, serta pergerakan kamera, dan terus mengembangkan ketiganya lewat praktik.</p></div>
-<div class="skills"><div><h3>Videografi</h3><p>Kamera, drone, gimbal, komposisi, sudut dan pergerakan kamera.</p></div><div><h3>Penyuntingan video</h3><p>CapCut Desktop untuk merangkai footage menjadi video.</p></div><div><h3>Jurnalistik &amp; riset</h3><p>Penggalian ide, peliputan, wawancara, penulisan berita, dan riset hukum.</p></div></div>
+<div data-aos="fade-right"><h2>Tentang saya</h2><p>Saya mahasiswa Ilmu Hukum di UIN Alauddin Makassar dengan pengalaman di pers mahasiswa, penyuluhan hukum, dan produksi konten digital. Pengalaman sebagai reporter melatih saya mencari ide, melakukan wawancara, dan menyusun informasi lapangan menjadi cerita yang terstruktur.</p><p>Dalam produksi video, saya terbiasa menggunakan kamera, drone, dan gimbal. Saya memahami dasar komposisi gambar, sudut kamera, serta pergerakan kamera, dan terus mengembangkan ketiganya lewat praktik.</p></div>
+<div class="skills" data-aos="fade-left"><div><h3>Videografi</h3><p>Kamera, drone, gimbal, komposisi, sudut dan pergerakan kamera.</p></div><div><h3>Penyuntingan video</h3><p>CapCut Desktop untuk merangkai footage menjadi video.</p></div><div><h3>Jurnalistik &amp; riset</h3><p>Penggalian ide, peliputan, wawancara, penulisan berita, dan riset hukum.</p></div></div>
 </div></section>
 <section class="section" id="pengalaman"><div class="shell">
-<article class="award"><strong>Juara I</strong><div><h3>Lomba Video Mars PTA Bali</h3><p>Editor video · Tingkat Provinsi Bali</p></div></article>
+<article class="award" data-aos="fade-up"><strong>Juara I</strong><div><h3>Lomba Video Mars PTA Bali</h3><p>Editor video · Tingkat Provinsi Bali</p></div></article>
 <h2>Pengalaman</h2>
 <ul class="timeline">
 <li><time datetime="2026-08">Agustus 2026</time><div><h3>Magang · Pengadilan Agama Karangasem, Bali</h3></div></li>
@@ -51,4 +112,62 @@
 <section class="section contact" id="kontak"><div class="shell"><h2>Mari berkolaborasi.</h2><div class="actions"><a class="button" href="https://www.instagram.com/ad_abharhst/" target="_blank" rel="noopener noreferrer">Hubungi @ad_abharhst ↗</a></div></div></section>
 </main>
 <footer><div class="shell"><span>© 2026 Andi Abhar</span><a href="#konten">Kembali ke atas ↑</a></div></footer>
+
+<dialog class="player" aria-label="Pemutar video layar penuh">
+<video controls playsinline preload="none"></video>
+<div class="player-toolbar"><button type="button" class="fullscreen">Layar penuh</button><button type="button" class="close-player" autofocus>Tutup ×</button></div>
+</dialog>
+<script src="/pembelajaran/aos.js"></script>
+<script src="/pembelajaran/gsap.min.js"></script>
+<script src="/pembelajaran/tilt.js"></script>
+<script>
+const player = document.querySelector('.player');
+const video = player.querySelector('video');
+const fullscreen = player.querySelector('.fullscreen');
+let launcher;
+
+function enterFullscreen() {
+  if (document.fullscreenElement) return;
+  if (player.requestFullscreen && document.fullscreenEnabled) {
+    player.requestFullscreen().catch(() => {});
+  } else if (typeof video.webkitEnterFullscreen === 'function' && video.readyState) {
+    try { video.webkitEnterFullscreen(); } catch {}
+  }
+}
+
+document.querySelectorAll('[data-video]').forEach(button => {
+  button.addEventListener('click', () => {
+    launcher = button;
+    video.poster = button.querySelector('img').src;
+    video.src = button.dataset.video;
+    player.showModal();
+    document.body.style.overflow = 'hidden';
+    video.play().catch(() => {});
+    enterFullscreen();
+  });
+});
+
+fullscreen.addEventListener('click', enterFullscreen);
+player.querySelector('.close-player').addEventListener('click', () => player.close());
+player.addEventListener('close', () => {
+  if (document.fullscreenElement === player) document.exitFullscreen().catch(() => {});
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+  document.body.style.overflow = '';
+  launcher?.focus({ preventScroll: true });
+});
+
+const motion = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (motion && window.AOS) AOS.init({ once: true, duration: 1000, offset: 40 });
+if (!motion || !window.AOS) document.querySelectorAll('[data-aos]').forEach(el => el.removeAttribute('data-aos'));
+if (motion && window.gsap) {
+  gsap.from('.top', { duration: 1.5, y: '-100%', opacity: .4, ease: 'bounce.out' });
+  gsap.from('.hero h1', { duration: 1, x: -50, opacity: 0, delay: .5, ease: 'back.out(1.7)' });
+  gsap.from('.hero-photo img', { duration: 1, y: -100, opacity: .4, rotateY: 180, ease: 'bounce.out' });
+}
+if (motion && window.VanillaTilt && matchMedia('(pointer:fine)').matches) {
+  VanillaTilt.init(document.querySelectorAll('.tilt'), { max: 25, speed: 400, reverse: true, glare: true, 'max-glare': .28 });
+}
+</script>
 </body></html>
